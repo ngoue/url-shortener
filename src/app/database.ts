@@ -1,10 +1,10 @@
-interface ShortenedURL {
+export interface ShortenedUrl {
   slug: string;
   url: string;
   redirects: number;
 }
 
-export const shortendURLs: { [key: string]: ShortenedURL } = {
+export const shortenedUrls: { [key: string]: ShortenedUrl } = {
   "61ob77": {
     slug: "61ob77",
     url: "https://www.example.com",
@@ -12,9 +12,9 @@ export const shortendURLs: { [key: string]: ShortenedURL } = {
   },
 };
 
-export const createShortenedURL = (url: string): ShortenedURL => {
+export const createShortenedURL = (url: string): ShortenedUrl => {
   const slug = Math.random().toString(36).slice(2, 8);
-  const shortenedURL: ShortenedURL = { slug, url, redirects: 0 };
-  shortendURLs[slug] = shortenedURL;
+  const shortenedURL: ShortenedUrl = { slug, url, redirects: 0 };
+  shortenedUrls[slug] = shortenedURL;
   return shortenedURL;
 };
