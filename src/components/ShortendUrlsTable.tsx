@@ -20,6 +20,8 @@ export default function ShortenedUrlsTable({
     onDeleteUrl(slug);
   };
 
+  // Thist table HTML is based on Tailwind's Components library, but the
+  // contents were adapted to display the shortened URLs.
   return (
     <div className="p-4">
       <div className="flow-root">

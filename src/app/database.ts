@@ -22,6 +22,9 @@ export const shortenedUrls: ShortenedUrl[] = [
  * @returns ShortenedUrl The shortened URL.
  */
 export const createShortenedUrl = (url: string): ShortenedUrl => {
+  // CoPilot suggested this for slugs, my considerations were:
+  // - Hash the URL to generate a unique slug.
+  // - Random 5-character alphanumeric string.
   const slug = Math.random().toString(36).slice(2, 8);
   const shortenedUrl: ShortenedUrl = { slug, url, redirects: 0 };
   shortenedUrls.push(shortenedUrl);
