@@ -33,6 +33,9 @@ export default function UrlForm({ onNewUrl }: UrlFormProps) {
 
   const handleBlur = () => {
     setEditing(false);
+    if (!url.includes("://")) {
+      setUrl(`https://${url}`);
+    }
   };
 
   const handleSubmit = async () => {
