@@ -12,6 +12,10 @@ export default function UrlForm({ onNewUrl }: UrlFormProps) {
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  // Rely on the browser's URL parser to validate the URL.
+  // This is a simple check to ensure the URL has a valid protocol, may want to
+  // consider a more strict validation in a real-world application. (e.g. making
+  // a request to the URL to ensure it's reachable).
   let urlIsValid;
   try {
     const { protocol } = new URL(url);
