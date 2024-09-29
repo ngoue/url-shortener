@@ -1,6 +1,26 @@
 import type { ShortenedUrl } from "@/app/database";
+import { useEffect } from "react";
 
-export default function ShortenedUrlsTable({ urls }: { urls: ShortenedUrl[] }) {
+interface ShortenedUrlsTableProps {
+  urls: ShortenedUrl[];
+  onDeleteUrl: (slug: string) => void;
+}
+
+export default function ShortenedUrlsTable({
+  urls,
+  onDeleteUrl,
+}: ShortenedUrlsTableProps) {
+  const handleDelete = async (slug: string) => {
+    fetch("/api/urls", {
+      method: "DELETE",
+      body: JSON.stringify({ slug }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    onDeleteUrl(slug);
+  };
+
   return (
     <div className="p-4">
       <div className="flow-root">
@@ -64,12 +84,12 @@ export default function ShortenedUrlsTable({ urls }: { urls: ShortenedUrl[] }) {
                       {redirects}
                     </td>
                     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                      <a
-                        href="#"
+                      <button
+                        onClick={() => handleDelete(slug)}
                         className="text-indigo-600 hover:text-indigo-900"
                       >
                         Delete
-                      </a>
+                      </button>
                     </td>
                   </tr>
                 ))}

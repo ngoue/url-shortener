@@ -4,17 +4,17 @@ export interface ShortenedUrl {
   redirects: number;
 }
 
-export const shortenedUrls: { [key: string]: ShortenedUrl } = {
-  "61ob77": {
+export const shortenedUrls: ShortenedUrl[] = [
+  {
     slug: "61ob77",
     url: "https://www.example.com",
     redirects: 0,
   },
-};
+];
 
-export const createShortenedURL = (url: string): ShortenedUrl => {
+export const createShortenedUrl = (url: string): ShortenedUrl => {
   const slug = Math.random().toString(36).slice(2, 8);
-  const shortenedURL: ShortenedUrl = { slug, url, redirects: 0 };
-  shortenedUrls[slug] = shortenedURL;
-  return shortenedURL;
+  const shortenedUrl: ShortenedUrl = { slug, url, redirects: 0 };
+  shortenedUrls.push(shortenedUrl);
+  return shortenedUrl;
 };
