@@ -1,5 +1,4 @@
 import type { ShortenedUrl } from "@/app/database";
-import { useEffect } from "react";
 
 interface ShortenedUrlsTableProps {
   urls: ShortenedUrl[];
